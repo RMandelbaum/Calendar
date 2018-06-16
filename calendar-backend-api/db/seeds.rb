@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+@user = User.create(name: "Rachel")
+
+@event = Event.create([
+  {description: 'Go to the Dentist',
+   date: Time.now.strftime("%m/%d/%y"),
+   start_time: Time.now.strftime("%I:%M"),
+   end_time: Time.now.strftime("%I:%M")
+  }
+  ])

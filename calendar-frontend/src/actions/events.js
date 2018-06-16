@@ -3,6 +3,7 @@ import { resetEventForm } from './eventsForm';
 const EVENTS_API = process.env.REACT_APP_API_URL;
 
 export const setEvents = events => {
+
     return{
         type: 'GET_EVENTS_SUCCESS',
         events
@@ -13,7 +14,7 @@ export const getEvents = () => {
     return dispatch => {
         return fetch(`${EVENTS_API}/users/:user_id/events`)
 
-        .then(response => response.json())
+        .then(response => console.log(response.json()))
         .then(events => dispatch(setEvents(events)))
 
         .then(events => console.log(events))
@@ -30,9 +31,8 @@ export const removeEvent = event => {
 }
 
 export const createEvent = (event, routerHistory) => {
-  debugger
     return dispatch => {
-      return fetch(`${EVENTS_API}/users/:user_id/events/new`, {
+      return fetch(`${EVENTS_API}/users/1/events/new`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'

@@ -1,7 +1,7 @@
 .TopNav{
   padding: 15px;
   width:100%;
-  background-image: url("https://1.bp.blogspot.com/-S52WmXqJiaA/UamDXl5JHWI/AAAAAAAAPUQ/aipfZEEn87M/s640/June+2013+Calendar.jpg");
+  background-image: url("https://c2.staticflickr.com/6/5325/8908617119_6280d2bd81.jpg");
 }
 
 .TopNav h1{
@@ -47,6 +47,11 @@
 
 .navbar-container {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+  align-items: center;
+
   list-style-type: none;
   background-color: white;
   padding-bottom: 15px;

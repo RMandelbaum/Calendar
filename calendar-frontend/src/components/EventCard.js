@@ -1,7 +1,8 @@
 import React from 'react';
-// import '../styles/Events.css';
+import '../styles/Events.css';
 
 const EventCard = (e) => {
+  
     return(
         <div key={e.id} className="EventCard">
           <h3>''{e.description}''</h3>

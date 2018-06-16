@@ -20,7 +20,7 @@ class EventForm extends Component {
         event.preventDefault();
         const { createEvent, eventFormData, history} = this.props;
             createEvent(eventFormData, history);
-            debugger
+
       }
 
     render(){
@@ -88,7 +88,7 @@ class EventForm extends Component {
 }
 
 const mapStateToProps = state => {
-    return{
+    return {
         eventFormData: state.eventFormData,
         errors: state.errors
     }

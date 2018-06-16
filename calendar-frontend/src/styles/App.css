@@ -1,0 +1,71 @@
+.HomeContainer, .RandomContainer{
+  margin: auto;
+  position: relative;
+  width: 75%;
+  top: 10px;
+  background-color: white;
+  padding: 40px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  border: solid;
+  border-color: rgb(0, 140, 91);
+}
+
+.HomeContainer h3, .RandomContainer p{
+  color: black;
+  font-size: 40px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.HomeContainer p{
+  color: black;
+  font-size: 20px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+}
+
+.HomeContainer a, .add{
+  display: inline-block;
+  margin-top: 5%;
+  padding: 10px;
+  border: solid 3px;
+  border-color: orange;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 14px;
+  color: black;
+}
+
+.HomeContainer a:hover, .add:hover{
+  text-decoration: none;
+  font-size: 16px;
+}
+
+
+.PageContent-Form{
+  background-color: #fffafa;
+  margin: auto;
+  text-align: center;
+  width: 75%;
+  padding: 15px;
+  border: solid 3px;
+  border-color: rgb(0, 140, 91);
+ }
+.PageContent{
+  background-color: #fffafa;
+  margin: auto;
+  text-align: center;
+  width: 75%;
+  padding: 15px;
+ }
+
+
+ .FormHeader{
+   margin:auto;
+   text-align: center;
+ }
+
+ .fieldRequired {
+   color: red;
+   text-align: center;
+ }

@@ -11,14 +11,15 @@ export const setEvents = events => {
 }
 
 export const getEvents = () => {
-    return dispatch => {
-        return fetch(`${EVENTS_API}/users/:user_id/events`)
 
-        .then(response => console.log(response.json()))
+    return dispatch => {
+        return fetch(`${EVENTS_API}/users/1/events`)
+
+        .then(response => response.json())
         .then(events => dispatch(setEvents(events)))
 
-        .then(events => console.log(events))
-        .catch(error => console.log(error))
+        .then(events => events)
+        .catch(error => error)
 
     }
 }
@@ -30,9 +31,12 @@ export const removeEvent = event => {
   }
 }
 
-export const createEvent = (event, routerHistory) => {
+
+
+export const createEvent = (event, routerHistory, date) => {
+    debugger
     return dispatch => {
-      return fetch(`${EVENTS_API}/users/1/events/new`, {
+      return fetch(`${EVENTS_API}/users/1/events`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -43,7 +47,7 @@ export const createEvent = (event, routerHistory) => {
       .then(response => response.json())
       .then(event => {
         dispatch( {type: 'ADD_NEW_EVENT',
-                  event: event
+                   event: event,
                   })
 
         dispatch(resetEventForm())

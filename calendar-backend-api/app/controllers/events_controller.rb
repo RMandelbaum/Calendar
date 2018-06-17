@@ -1,3 +1,5 @@
+require 'byebug'
+
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :update, :destroy]
 
@@ -6,8 +8,18 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = Event.new(event_params)
-    if event.save
+    @event = Event.new(event_params)
+
+    if @event.save
+      # byebug
+      # @date = Date.parse(event_params[:date], '%d, %m %Y').strftime("%m/%d/%Y")
+      # @start_time = Time.parse(event_params[:start_time]).strftime('%H:%M')
+      # @end_time =  Time.parse(event_params[:start_time]).strftime('%H:%M')
+      # event_params[:date] = @date
+      # event.start_time = @start_time
+      # event.end_time = @end_time
+      # byebug
+
       render json: event
     else
       render json: { message: event.errors }, status: 400
@@ -42,6 +54,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
+
     params.require(:event).permit(:description, :date, :start_time, :end_time)
   end
 

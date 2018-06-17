@@ -8,16 +8,23 @@ class Events extends Component{
 
   componentDidMount(){
     this.props.getEvents()
-
   }
 
-  render(){
 
+  render(){
+      debugger
+      const events = this.props.events
          return(
            <div className="EventsContainer">
               <h2 >Your Upcoming Events:</h2>
-              <p className ="EventCard">events</p>
-              
+                 {events.map(e =>
+                  <EventCard key={e.id}
+                             e={e}
+                             description = {e.description}
+                             date = {e.date}
+                             start_time = {e.start_time}
+                             end_time = {e.end_time}
+                  />)}
         </div>
     )
 

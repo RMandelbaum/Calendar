@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { createEvent } from '../actions/events';
+import { createEvent, saveDate } from '../actions/events';
 import { connect } from 'react-redux';
-import  Week  from '../components/Week'
+import  Day  from '../components/Day'
+import { Redirect } from 'react-router-dom'
 
 import '../styles/calendar.css'
 
@@ -15,21 +16,34 @@ class Calendar extends Component {
       };
     }
 
-    handleClick = () => {
+
+    handleClick = (event) => {
+      let date = event.target
+      debugger
       const { createEvent, eventFormData, history} = this.props;
+
       this.setState({
         hasBeenClicked: true,
-        redirect: createEvent(eventFormData, history)
-
+        redirect: true
+        //createEvent(eventFormData, history, date)
     })
   }
 
+ //  renderRedirect = () => {
+ //   if (this.state.redirect) {
+ //     return <Redirect to='/events/new'>
+ //   }
+ // }
+
+    // What we want is click on square and get event form with that date [square id] saved already
+
+
     render() {
       const createEvent = this.props;
-      let days = [];
+      let daySquares = [];
 
       for (let i = 1; i <= 30; i++) {
-        days.push(i);
+        daySquares.push(i);
         }
 
         return(
@@ -44,14 +58,13 @@ class Calendar extends Component {
                 <span>F</span>
                 <span>S</span>
               </div>
-              <div className="weeks-container" style={{cursor:'pointer'}} onClick = {this.handleClick}>
-               {days.map(day =>
-                 <Week key={day.id}
-                           createEvent={createEvent}
-                           day={day}
-                           id = {day.id}
-
-
+              <div className="days-container"  onClick = {this.handleClick}>
+              { // {this.renderRedirect()}
+            }
+               {daySquares.map(day =>
+                 <Day key={day}
+                       day={day}
+                       date= {day}
                             />)}
           </div>
             </div>
@@ -63,7 +76,7 @@ class Calendar extends Component {
 
 const mapStateToProps = (state) => {
   return({
-    days: state.days
+    daySquares: state.daySquares
   })
 }
 

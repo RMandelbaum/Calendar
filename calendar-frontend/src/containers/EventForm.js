@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { updateEventFormData } from '../actions/eventsForm';
 import { createEvent } from '../actions/events';
 import FormError from '../components/FormError';
+import  Day  from '../components/Day'
+
 import '../styles/App.css'
 
 class EventForm extends Component {
@@ -18,14 +20,15 @@ class EventForm extends Component {
 
       handleOnSubmit = event => {
         event.preventDefault();
+
         const { createEvent, eventFormData, history} = this.props;
-            createEvent(eventFormData, history);
+            createEvent(eventFormData, history, );
 
       }
 
     render(){
-        const { description, date, start_time, end_time} = this.props.eventFormData;
-
+        const { description, start_time, end_time} = this.props.eventFormData;
+        
         return(
             <div>
                 <h3 className="FormHeader">Event Form</h3>
@@ -43,17 +46,7 @@ class EventForm extends Component {
                           />
 
                     </div>
-                    <br />
-                    <div>
-                        <label htmlFor="date">Date:</label>
-                        <br />
-                        <input type='date'
-                               onChange={this.handleOnChange}
-                               name='date'
-                               value={date}
-                               placeholder="MM/DD/YYYY" />
-                    </div>
-                    <br />
+
                     <div>
                         <label htmlFor="start_time">Start Time:</label>
                         <br />

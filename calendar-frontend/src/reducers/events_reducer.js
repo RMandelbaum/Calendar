@@ -8,7 +8,6 @@ export default (state = [], action) => {
     case 'GET_EVENTS_SUCCESS':
         return action.events;
 
-
     case 'ADD_NEW_EVENT':
       return state.concat(action.event);
 

@@ -7,14 +7,8 @@ import Calendar from './Calendar';
 import EventForm from './EventForm';
 import { getEvents } from '../actions/events';
 import { Link } from 'react-router-dom';
-// import '../styles/App.css';
 
 class App extends Component {
-
-  // componentDidMount(){
-  //   this.props.getEvents()
-  // }
-
 
   render() {
     return (
@@ -27,7 +21,7 @@ class App extends Component {
           <Switch>
             <Route exact path = '/' component = {Calendar}/>
             <Route exact path = '/events' component = {Events} />
-            <Route exact path = '/events/new' component = {EventForm} />
+            <Route exact path = '/events/:id/new' component = {EventForm} />
            </Switch>
         </div>
      </Router>

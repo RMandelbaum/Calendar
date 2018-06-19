@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { createEvent, saveDate } from '../actions/events';
 import { connect } from 'react-redux';
 import  Day  from '../components/Day'
-import { Redirect } from 'react-router-dom'
-
+import EventCalendar from '../components/EventCalendar';
+import { getEvents } from '../actions/events';
 import '../styles/calendar.css'
 
+//displays the days, events and renders form for event
 class Calendar extends Component {
     constructor(){
       super();
@@ -16,68 +16,68 @@ class Calendar extends Component {
       };
     }
 
-
     handleClick = (event) => {
-      let date = event.target
-      debugger
-      const { createEvent, eventFormData, history} = this.props;
+      let date = event.target.id
+      const {history} = this.props;
 
       this.setState({
         hasBeenClicked: true,
-        redirect: true
-        //createEvent(eventFormData, history, date)
+        redirect: history.push(`/events/${date}/new`, date)
     })
   }
 
- //  renderRedirect = () => {
- //   if (this.state.redirect) {
- //     return <Redirect to='/events/new'>
- //   }
- // }
-
-    // What we want is click on square and get event form with that date [square id] saved already
-
+    componentDidMount(){
+      this.props.getEvents()
+    }
 
     render() {
-      const createEvent = this.props;
       let daySquares = [];
 
       for (let i = 1; i <= 30; i++) {
         daySquares.push(i);
         }
 
-        return(
-            <div className = "calendar-container">
-              <h1>January</h1>
-              <div className = "day">
-                <span>S</span>
-                <span>M</span>
-                <span>T</span>
-                <span>W</span>
-                <span>Th</span>
-                <span>F</span>
-                <span>S</span>
-              </div>
-              <div className="days-container"  onClick = {this.handleClick}>
-              { // {this.renderRedirect()}
-            }
-               {daySquares.map(day =>
-                 <Day key={day}
-                       day={day}
-                       date= {day}
-                            />)}
+      const events = this.props.events
+
+      return(
+        <div className = "calendar-container">
+          <h1>January</h1>
+          <div className = "day">
+            <span>S</span>
+            <span>M</span>
+            <span>T</span>
+            <span>W</span>
+            <span>Th</span>
+            <span>F</span>
+            <span>S</span>
           </div>
-            </div>
+          <div className="days-container"  onClick = {this.handleClick}>
+           {daySquares.map(day =>
+             <Day key={day}
+                   day={day}
+                   date= {day}
+                  />
+              )}
+          </div>
+          <div className = "calendar-container">
+            {events.map(e =>
+              <EventCalendar
+                    description = {e.description}
+                    date = {e.date}/>
+              )}
+          </div>
+        </div>
+      )}
+  }
 
-             )
-            }
-          }
+
+  const mapStateToProps = (state) => {
+    return({
+      daySquares: state.daySquares,
+      events: state.events
+
+    })
+  }
 
 
-const mapStateToProps = (state) => {
-  return({
-    daySquares: state.daySquares
-  })
-}
-
-export default connect(mapStateToProps, {createEvent})(Calendar)
+export default connect(mapStateToProps, {getEvents})(Calendar)

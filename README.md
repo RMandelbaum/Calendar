@@ -2,17 +2,18 @@ Calendar App
 
 Rails Backend API with a frontend of React/Redux
 
-Bonus Features:
+To Run Application from Terminal:
 
+$ git clone https://github.com/RMandelbaum/Calendar.git
 
-<br />
-// <div>
-//     <label htmlFor="date">Date:</label>
-//     <br />
-//     <input type='text'
-//            onChange={this.handleOnChange}
-//            name='date'
-//            value={date}
-//            placeholder= {date}/>
-// </div>
-// <br />
+Backend:
+$ cd Calendar/calendar-backend-api
+$ bundle install
+$ createdb calendar-backend-api_development
+$ rails db:migrate
+$ rails db:seed
+$ rails s -p 3001
+
+Frontend:
+$ cd Calendar/calendar-frontend
+$ npm start

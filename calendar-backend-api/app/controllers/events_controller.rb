@@ -11,18 +11,18 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     if @event.save
-      # byebug
+     #Work on format for time 
       # @date = Date.parse(event_params[:date], '%d, %m %Y').strftime("%m/%d/%Y")
       # @start_time = Time.parse(event_params[:start_time]).strftime('%H:%M')
       # @end_time =  Time.parse(event_params[:start_time]).strftime('%H:%M')
       # event_params[:date] = @date
       # event.start_time = @start_time
       # event.end_time = @end_time
-      # byebug
 
-      render json: event
+
+      render json: @event
     else
-      render json: { message: event.errors }, status: 400
+      render json: { message: @event.errors }, status: 400
     end
   end
 

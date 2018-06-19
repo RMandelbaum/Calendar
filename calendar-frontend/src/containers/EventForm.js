@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { updateEventFormData } from '../actions/eventsForm';
 import { createEvent } from '../actions/events';
 import FormError from '../components/FormError';
-import  Day  from '../components/Day'
+import '../styles/Form.css'
 
-import '../styles/App.css'
-
+//Form to Fill out a new event
 class EventForm extends Component {
 
     handleOnChange = event => {
@@ -15,6 +14,7 @@ class EventForm extends Component {
         const currentEventFormData = Object.assign({}, this.props.eventFormData, {
           [name]: value
         })
+
         this.props.updateEventFormData(currentEventFormData)
       }
 
@@ -22,19 +22,29 @@ class EventForm extends Component {
         event.preventDefault();
 
         const { createEvent, eventFormData, history} = this.props;
-            createEvent(eventFormData, history, );
+        let date = `1/${this.props.history.location.state}/2013`
+
+        createEvent(eventFormData, history, date );
 
       }
 
     render(){
+
         const { description, start_time, end_time} = this.props.eventFormData;
-        
+
         return(
             <div>
                 <h3 className="FormHeader">Event Form</h3>
                 {this.props.errors === true ? <FormError />: null}
                 <hr />
+
+                <div className="FormHeader">
+                  <label htmlFor="Date">1/{this.props.history.location.state}/2013</label>
+                    <br />
+
+                </div>
                 <form className="PageContent-Form" onSubmit={this.handleOnSubmit}>
+
                     <div>
                         <label htmlFor="description">Event Entry: </label>
                         <br />
@@ -44,9 +54,8 @@ class EventForm extends Component {
                                value={description}
                                placeholder="required"
                           />
-
                     </div>
-
+                    <br />
                     <div>
                         <label htmlFor="start_time">Start Time:</label>
                         <br />
@@ -67,14 +76,11 @@ class EventForm extends Component {
                                placeholder="HH:MM" />
                     </div>
                     <br />
-
                     <br />
-
                     <br />
                     <Button type="submit" bsStyle='primary'>Submit</Button>
                 </form>
                 <br />
-
             </div>
         )
     }
@@ -87,4 +93,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {updateEventFormData, createEvent})(EventForm)
+ export default connect(mapStateToProps, {updateEventFormData, createEvent})(EventForm)

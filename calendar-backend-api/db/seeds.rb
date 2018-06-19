@@ -9,7 +9,7 @@
 
 @event = Event.create([
   {description: 'Go to the Dentist',
-   date: Time.now.strftime("%m/%d/%y"),
+   date: "01/01/2018",
    start_time: Time.now.strftime("%I:%M"),
    end_time: Time.now.strftime("%I:%M")
   }

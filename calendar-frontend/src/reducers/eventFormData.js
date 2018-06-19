@@ -1,3 +1,5 @@
+// Controls the state of the form
+
 const initialState = {
     description: "",
     date: "",

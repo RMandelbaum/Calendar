@@ -1,5 +1,4 @@
-
-
+//Controls the state of events -- adding, removing, and viewing all
 export default (state = [], action) => {
   let idx;
   let e;

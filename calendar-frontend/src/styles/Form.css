@@ -1,0 +1,27 @@
+.PageContent-Form{
+  background-color: #fffafa;
+  margin: auto;
+  text-align: center;
+  width: 75%;
+  padding: 15px;
+  border: solid 3px;
+  border-color: rgb(0, 140, 91);
+ }
+.PageContent{
+  background-color: #fffafa;
+  margin: auto;
+  text-align: center;
+  width: 75%;
+  padding: 15px;
+ }
+
+
+ .FormHeader{
+   margin:auto;
+   text-align: center;
+ }
+
+ .fieldRequired {
+   color: red;
+   text-align: center;
+ }

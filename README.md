@@ -1,4 +1,4 @@
-Calendar App
+# Calendar App
 
 Rails Backend API with a frontend of React/Redux
 
@@ -6,7 +6,7 @@ To Run Application from Terminal:
 
 $ git clone https://github.com/RMandelbaum/Calendar.git
 
-Backend:
+## Backend:
 
 $ cd Calendar/calendar-backend-api
 
@@ -20,7 +20,7 @@ $ rails db:seed
 
 $ rails s -p 3001
 
-Frontend:
+## Frontend:
 
 $ cd Calendar/calendar-frontend
 
